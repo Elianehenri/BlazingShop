@@ -5,30 +5,36 @@
 @inject ShopDbContext Context;
 @inject NavigationManager NavManager
 
-<h1>Delete @model?.Title?</h1>
+<link rel="stylesheet" href="Delete.razor.css" />
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger" role="alert">
-        @errorMessage
-    </div>
-}
+<div class="small-form-container">
+    <h1>Delete @model?.Title?</h1>
 
-<EditForm Model="@model" OnValidSubmit="@HandleSubmit">
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <InputText readonly class="form-control" type="text" id="Title" @bind-Value="model.Title" />
-    </div>
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
 
-    <div class="mb-3">
-        <label for="Price" class="form-label">Price</label>
-        <InputNumber readonly class="form-control" type="number" id="Price" @bind-Value="model.Price" />
+    <div>
+        <EditForm Model="@model" OnValidSubmit="@HandleSubmit" class="mb-4">
+            <div class="mb-2">
+                <label for="Title" class="form-label">Title</label>
+                <InputText readonly class="form-control" type="text" id="Title" @bind-Value="model.Title" />
+            </div>
+
+            <div class="mb-2">
+                <label for="Price" class="form-label">Price</label>
+                <InputNumber readonly class="form-control" type="number" id="Price" @bind-Value="model.Price" />
+            </div>
+
+            <button class="btn btn-danger" type="submit">DELETE</button>
+        </EditForm>
     </div>
-    <button class="btn btn-danger" type="submit">DELETE</button>
-</EditForm>
+</div>
 
 @code {
-
     [Parameter]
     public int Id { get; set; }
 
@@ -58,5 +64,4 @@
             errorMessage = ex.Message;
         }
     }
-
 }

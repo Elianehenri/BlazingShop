@@ -1,0 +1,46 @@
+﻿/* styles.css */
+/* Estilos para a tabela */
+table {
+    width: 80%; /* Ajuste o tamanho conforme necessário */
+    margin: auto; /* Centraliza a tabela na página */
+    /*background-color: #c1d6c2;  Cor de fundo da tabela */
+    border-radius: 8px; /* Borda arredondada */
+    overflow: hidden; /* Evita que as bordas arredondadas se estendam além da tabela */
+}
+
+th, td {
+    padding: 10px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinhamento do texto */
+}
+
+
+/* Estilos para os links de edição e exclusão */
+a {
+    display: inline-block; /* Permite adicionar padding e margin */
+    margin-right: 10px; /* Espaçamento à direita entre os links */
+}
+.header-row {
+    background-color: #4d604e; /* Cor de fundo para a linha de cabeçalho */
+    color: white; /* Cor do texto na linha de cabeçalho */
+    font-size: 1.5em; /* Tamanho da fonte */
+}
+/* Estilos para linhas pares */
+.even-row {
+    background-color: #c1d6c2; /* Cor de fundo para linhas pares */
+}
+
+/* Estilos para linhas ímpares */
+.odd-row {
+    background-color: #c5d2c6; /* Cor de fundo para linhas ímpares */
+}
+/* Estilos adicionais para centralizar e adicionar espaço */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.space-between {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,16 +1,22 @@
-﻿@page "/products"
+﻿
+@page "/products"
 @using BlazingShop.Data
 @using BlazingShop.Models
 @using Microsoft.EntityFrameworkCore
 @using System.Globalization
 @inject ShopDbContext Context;
 
-<h1>Produtos</h1>
+<head>
+    <link rel="stylesheet" href="../Pages/Products/Index.razor.css" />
+</head>
 
-<a href="products/create" class="btn btn-primary"><i class="oi oi-plus"></i> CREATE </a>
+<h1 class="center-content">Produtos</h1>
+<div class="center-content space-between">
+    <a href="products/create" class="btn btn-primary"><i class="oi oi-plus"></i> CREATE </a>
+</div>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="header-row">
             <td>#</td>
             <td>Title</td>
             <td>Price</td>
@@ -18,19 +24,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in _products)
+        @foreach (var (product, index) in _products.Select((product, index) => (product, index)))
         {
-            <tr>
+            <tr class="@((index % 2 == 0) ? "even-row" : "odd-row")">
                 <td>@product.Id</td>
                 <td>@product.Title</td>
                 <td>@product.Price.ToString("C", new CultureInfo("pt-BR"))</td>
                 <td>
-                    <a href="/products/edit/@product.Id">EDIT</a>
-                    <a href="/products/delete/@product.Id">DELETE</a>
+                    <a href="/products/edit/@product.Id"><i class="oi oi-pencil"></i> </a>
+                    <a href="/products/delete/@product.Id"><i class="oi oi-trash"></i> </a>
                 </td>
             </tr>
         }
     </tbody>
+
 </table>
 
 @code {
@@ -40,5 +47,4 @@
     {
         _products = await Context.Products.AsNoTracking().ToListAsync();
     }
-
 }

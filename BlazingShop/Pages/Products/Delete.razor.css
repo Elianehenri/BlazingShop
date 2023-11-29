@@ -1,0 +1,39 @@
+﻿/* Delete.razor.css */
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-size: 0.9rem;
+}
+
+.form-control {
+    height: 28px;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.btn-danger {
+    font-size: 0.9rem;
+    height: 28px;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+
+/* Estilos adicionais para a página */
+.small-form-container {
+    width: 300px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

@@ -1,48 +1,52 @@
-﻿@page "/products/edit/{id:int}"
+﻿
+@page "/products/edit/{id:int}"
 @using BlazingShop.Models
 @using BlazingShop.Data
 @using Microsoft.EntityFrameworkCore
 @inject ShopDbContext Context;
 @inject NavigationManager NavManager
 
+<link rel="stylesheet" href="../Pages/Products/Edit.razor.css" />
+
 <h1>@model?.Title</h1>
 
-<EditForm Model="@model" OnValidSubmit="@HandleSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+<div class="edit-form-container">
+    <EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <InputText class="form-control" type="text" id="Title" @bind-Value="model.Title" />
-    </div>
-
-    <div class="mb-3">
-        <label for="Price" class="form-label">Price</label>
-        <InputNumber class="form-control" type="number" id="Price" @bind-Value="model.Price" />
-    </div>
-
-    <div class="mb-3">
-        <label for="CategoryId" class="form-label">Category</label>
-        <InputSelect id="categoryId" @bind-Value="model.CategoryId" class="form-control">
-            @foreach (var category in categories)
-            {
-                <option value="@category.Id">@category.Title</option>
-            }
-        </InputSelect>
-    </div>
-
-    @if (!string.IsNullOrEmpty(errorMessage))
-    {
-        <div class="alert alert-danger" role="alert">
-            @errorMessage
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title</label>
+            <InputText class="form-control" type="text" id="Title" @bind-Value="model.Title" />
         </div>
-    }
 
-    <button class="btn btn-success" type="submit">SAVE</button>
-</EditForm>
+        <div class="mb-3">
+            <label for="Price" class="form-label">Price</label>
+            <InputNumber class="form-control" type="number" id="Price" @bind-Value="model.Price" />
+        </div>
+
+        <div class="mb-3">
+            <label for="CategoryId" class="form-label">Category</label>
+            <InputSelect id="categoryId" @bind-Value="model.CategoryId" class="form-control">
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Id">@category.Title</option>
+                }
+            </InputSelect>
+        </div>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @errorMessage
+            </div>
+        }
+
+        <button class="btn btn-success" type="submit">SAVE</button>
+    </EditForm>
+</div>
 
 @code {
-
     [Parameter]
     public int Id { get; set; }
 
@@ -78,5 +82,4 @@
             errorMessage = ex.Message;
         }
     }
-
 }

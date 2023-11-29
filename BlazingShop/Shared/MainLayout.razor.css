@@ -1,8 +1,9 @@
-/* mainlayout.css */
+
 .page {
     position: relative;
     display: flex;
     flex-direction: column;
+    
 }
 
 main {
@@ -14,7 +15,7 @@ main {
 }
 
 .top-row {
-    background-color: #191970;
+    background-color: #212529;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
@@ -71,3 +72,4 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+
