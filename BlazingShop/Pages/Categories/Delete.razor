@@ -1,0 +1,39 @@
+﻿@page "/categories/delete/{id:int}"
+@using BlazingShop.Data
+@using BlazingShop.Models
+@using Microsoft.EntityFrameworkCore
+@inject ShopDbContext Context;
+@inject NavigationManager NavManager
+
+<h1>Excluir Categoria</h1>
+
+<p>Você tem certeza de que deseja excluir a categoria '@categoryModel.Title'?</p>
+
+<button class="btn btn-danger" @onclick="DeleteCategory">Excluir</button>
+<a href="/categories" class="btn btn-secondary">Cancelar</a>
+
+@code {
+    private Category categoryModel = new();
+    private string? errorMessage = null;
+
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoryModel = await Context.Categories.FindAsync(Id);
+    }
+
+    private async Task DeleteCategory()
+    {
+        try
+        {
+            Context.Categories.Remove(categoryModel);
+            await Context.SaveChangesAsync();
+            NavManager.NavigateTo("/categories"); // Redireciona para a lista de categorias após excluir.
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+}

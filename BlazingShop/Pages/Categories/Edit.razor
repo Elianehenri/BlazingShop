@@ -1,0 +1,53 @@
+﻿@page "/categories/edit/{id:int}"
+@using BlazingShop.Data
+@using BlazingShop.Models
+@using Microsoft.EntityFrameworkCore
+@inject ShopDbContext Context;
+@inject NavigationManager NavManager
+
+<h1>Editar Categoria</h1>
+
+<EditForm Model="@categoryModel" OnValidSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="CategoryTitle" class="form-label">Title</label>
+        <InputText class="form-control" type="text" id="CategoryTitle" @bind-Value="categoryModel.Title" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
+
+    <button class="btn btn-success" type="submit">SAVE</button>
+</EditForm>
+
+@code {
+    private Category categoryModel = new();
+    private string? errorMessage = null;
+
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoryModel = await Context.Categories.FindAsync(Id);
+    }
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            Context.Categories.Update(categoryModel);
+            await Context.SaveChangesAsync();
+            NavManager.NavigateTo("/categories"); // Redireciona para a lista de categorias após salvar.
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+}
