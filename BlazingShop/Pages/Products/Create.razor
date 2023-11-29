@@ -7,12 +7,13 @@
 @inject ShopDbContext Context;
 @inject NavigationManager NavManager
 
-<link rel="stylesheet" href="../Pages/Products/Create.razor.css" />
+
+
+<h1>Novo Produto</h1>
 
 <div class="create-form-container">
-    <h1>Novo Produto</h1>
-
-    <EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+ 
+    <EditForm Model="@model" OnValidSubmit="@HandleSubmit" class="create-form-container">
         <DataAnnotationsValidator />
         <ValidationSummary />
 

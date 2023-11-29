@@ -1,34 +1,40 @@
-﻿@page "/categories"
+﻿
+@page "/categories"
 @using BlazingShop.Data
 @using BlazingShop.Models
 @using Microsoft.EntityFrameworkCore
 @inject ShopDbContext Context;
 
+<link rel="stylesheet" href="./Categories.razor.css" />
+
 <h1>Categorias</h1>
 
-<a href="categories/create" class="btn btn-primary"><i class="oi oi-plus"></i> CREATE </a>
-<table class="table">
-    <thead>
-        <tr>
-            <td>#</td>
-            <td>Title</td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var category in _categories)
-        {
+<a href="categories/create" class="btn btn-primary btn-create"><i class="oi oi-plus"></i> CREATE </a>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@category.Id</td>
-                <td>@category.Title</td>
-                <td>
-                    <a href="/categories/edit/@category.Id">EDIT</a>
-                    <a href="/categories/delete/@category.Id">DELETE</a>
-                </td>
+                <td></td>
+                <td>Title</td>
+                <td></td>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var category in _categories)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Title</td>
+                    <td>
+                        <a href="/categories/edit/@category.Id" class="oi oi-pencil">  </a>
+                        <a href="/categories/delete/@category.Id" class="oi oi-trash">  </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
     private List<Category> _categories = new();

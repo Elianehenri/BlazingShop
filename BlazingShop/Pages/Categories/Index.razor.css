@@ -1,0 +1,23 @@
+﻿
+.table-container {
+    background-color: #c1d6c2; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px; 
+}
+
+.btn-create {
+    margin-bottom: 20px; 
+}
+
+/* Estilo para telas maiores (desktop) */
+@media (min-width: 768px) {
+    .table-container {
+        max-width: 700px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
