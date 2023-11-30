@@ -2,7 +2,6 @@
 table {
     width: 80%; /* Ajuste o tamanho conforme necessário */
     margin: auto; /* Centraliza a tabela na página */
-    /*background-color: #c1d6c2;  Cor de fundo da tabela */
     border-radius: 8px; /* Borda arredondada */
     overflow: hidden; /* Evita que as bordas arredondadas se estendam além da tabela */
 }

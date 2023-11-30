@@ -5,26 +5,30 @@
 @inject ShopDbContext Context;
 @inject NavigationManager NavManager
 
+<link rel="stylesheet" href="../Pages/Categories/Create.razor.css" />
+
+
 <h1>Nova Categoria</h1>
+<div class="create-form-container">
+    <EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-<EditForm Model="@model" OnValidSubmit="@HandleSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <InputText class="form-control" type="text" id="Title" @bind-Value="model.Title" />
-    </div>
-
-    @if (!string.IsNullOrEmpty(errorMessage))
-    {
-        <div class="alert alert-danger" role="alert">
-            @errorMessage
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title</label>
+            <InputText class="form-control" type="text" id="Title" @bind-Value="model.Title" />
         </div>
-    }
 
-    <button class="btn btn-success" type="submit">SAVE</button>
-</EditForm>
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @errorMessage
+            </div>
+        }
+
+        <button class="btn btn-success" type="submit">SAVE</button>
+    </EditForm>
+</div>
 
 @code {
     private Category model = new();  // Alterado para Category

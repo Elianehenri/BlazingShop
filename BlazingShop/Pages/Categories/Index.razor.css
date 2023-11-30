@@ -12,6 +12,11 @@
 .btn-create {
     margin-bottom: 20px; 
 }
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* Estilo para telas maiores (desktop) */
 @media (min-width: 768px) {
@@ -19,5 +24,10 @@
         max-width: 700px; 
         margin-left: auto;
         margin-right: auto;
+    }
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
