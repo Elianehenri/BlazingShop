@@ -1,18 +1,18 @@
-﻿
-@page "/products"
+﻿@page "/products"
 @using BlazingShop.Data
 @using BlazingShop.Models
 @using Microsoft.EntityFrameworkCore
 @using System.Globalization
 @inject ShopDbContext Context;
 
-<head>
-    <link rel="stylesheet" href="../Pages/Products/Index.razor.css" />
-</head>
+
+<link rel="stylesheet" href="./Products/Index.razor.css" />
+
 
 <h1 class="center-content">Produtos</h1>
+
 <div class="center-content space-between">
-    <a href="products/create" class="btn btn-primary"><i class="oi oi-plus"></i> CREATE </a>
+    <a href="products/create" class="btn btn-primary" btn-create><i class="oi oi-plus"></i> CREATE </a>
 </div>
 <table class="table">
     <thead>
@@ -37,7 +37,6 @@
             </tr>
         }
     </tbody>
-
 </table>
 
 @code {
